@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = f'django-insecure-@{os.getenv("SECRET_KEY", default="key")}'
 
-DEBUG = not os.getenv('DEBUG', default="False").lower() == 'false'
+DEBUG = not os.getenv('DEBUG', default="True").lower() == 'false'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='*, localhost').replace(' ', '').split(',')
 
@@ -90,12 +90,11 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_URL = 'static/'
-STATICFILES_DIRS = (BASE_DIR / STATIC_URL, )
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / MEDIA_URL
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 PAGE_SIZE = 6
 

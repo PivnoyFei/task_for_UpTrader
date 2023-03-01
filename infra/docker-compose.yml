@@ -13,6 +13,7 @@ services:
       - ${DB_PORT}:${DB_PORT}
 
   backend:
+    container_name: backend
     build:
       context: ../backend
       dockerfile: Dockerfile
@@ -26,7 +27,6 @@ services:
       - ./.env
     ports:
       - "8000:8000"
-
 
 volumes:
   static_value:

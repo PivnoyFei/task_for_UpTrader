@@ -69,7 +69,7 @@ python manage.py createsuperuser
 
 #### Запускаем сервер:
 ```bash
-python manage.py runserver --insecure
+python manage.py runserver
 ```
 
 ### Для запуска в Docker:

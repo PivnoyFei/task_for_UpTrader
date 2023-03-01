@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: ${DB_HOST}
+    image: postgres:13.0-alpine
+    restart: always
+    volumes:
+      - db_value:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - static_value:/backend/static/
+      - media_value:/backend/media/
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+    ports:
+      - "8000:8000"
+
+
+volumes:
+  static_value:
+  media_value:
+  db_value:

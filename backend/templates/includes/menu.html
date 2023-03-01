@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+  {% block title %} {{ title }} {% endblock title %}
+  {% block content %}
+    <li>
+
+      {% if item.children.exists %}
+        <a href="{{ item.slug }}">{{ item.title }}</a>
+        <ul>
+
+          {% for child in item.children.all %}
+            {% with item=child template_name="includes/menu.html" %}
+              {% include template_name %}
+            {% endwith %}
+          {% endfor %}
+
+        </ul>
+      {% else %}
+        <a href="{{ item.slug }}">{{ item.title }}</a>
+      {% endif %}
+
+    </li>
+  {% endblock content %}

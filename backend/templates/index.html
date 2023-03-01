@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock title %}
+{% block content %}
+
+  {% load menu_tag %}
+  {% draw_menu menu_name as page_obj %}
+
+    <ul>
+      {% for item in page_obj %}
+        {% include "includes/menu.html" %}
+      {% endfor %}
+    </ul>
+
+    {% include "includes/paginator.html" %}
+  {% endblock content %}
